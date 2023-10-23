@@ -3,6 +3,7 @@ from database_service import db, File, bcrypt, User
 import auth_service as auth
 import upload_service as upl
 from map_service import generate_plot
+from data_test import data_time
 import secrets
 
 secret_key = secrets.token_hex(16)
@@ -18,6 +19,7 @@ bcrypt.init_app(app)
 @app.route('/upload_file', methods=['POST'])
 def upload_file():
     return upl.upload_file()
+
 
 
 @app.route('/plot', methods=['POST'])
