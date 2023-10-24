@@ -37,6 +37,12 @@
             <h2>Graph</h2>
             <form method="POST" action="{{ url_for('plot_graph') }}">
                 <input type="hidden" name="file_path" value="{{ file_path }}">
+                {% for date in dates %}
+                <label style="display: block">
+                    <input name="dates" type="checkbox" value="{{ date }}" />
+                    {{ date }}
+                </label>
+                {% endfor %}
                 <input type="submit" value="Build Graph">
             </form>
         </div>

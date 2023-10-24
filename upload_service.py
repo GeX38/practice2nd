@@ -4,7 +4,7 @@ from database_service import db, File, User
 from datetime import datetime
 import os
 
-ALLOWED_EXTENSIONS = {'jpeg', 'jpg', 'png', 'txt', 'h5'}
+ALLOWED_EXTENSIONS = {'h5'}
 
 
 

@@ -28,9 +28,10 @@ def plot_graph():
         return redirect(url_for('login'))
 
     file_path = session.get('file_path')
+    dates = request.form.getlist('dates')
 
     if request.method == 'POST' and file_path:
-        generate_plot(file_path)
+        generate_plot(file_path, dates)
         return redirect(url_for('home'))
 
     return redirect(url_for('home'))
@@ -64,7 +65,10 @@ def home():
         user = User.query.get(user_id)
         user_files = File.query.filter_by(user_id=user_id).all()
 
-        return render_template('home.html', user=user, user_files=user_files)
+        file_path = session.get('file_path')
+        dates = data_time(file_path) or []
+
+        return render_template('home.html', user=user, user_files=user_files, dates=dates)
     
     return redirect(url_for('login'))
 
